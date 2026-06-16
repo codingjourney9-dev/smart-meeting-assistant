@@ -1,0 +1,19 @@
+# ============================================================================
+# FILE: .gitignore (repo root)
+# PURPOSE: Keep secrets and generated artifacts out of version control.
+# CRITICAL: server/.env holds DEEPGRAM_API_KEY / OPENAI_API_KEY / MONGODB_URI —
+#           it must NEVER be committed. Commit the .env.example templates only.
+# ============================================================================
+
+node_modules/
+dist/
+build/
+
+# Environment files (secrets!) — templates (.env.example) ARE committed
+.env
+.env.local
+.env.*.local
+
+# Logs & OS noise
+*.log
+.DS_Store
