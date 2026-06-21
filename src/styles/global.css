@@ -1,0 +1,90 @@
+/* ============================================================================
+   FILE: client/src/styles/global.css — APP-WIDE STYLES
+
+   PURPOSE:
+     Minimal, clean baseline styling for the whole app. Imported ONCE in
+     client/src/main.jsx so every component can use these classes.
+
+   CONNECTIONS (which components use which classes):
+     .app-shell / .app-header / .app-main / .app-footer  -> App.jsx
+     .panel                       -> Dashboard.jsx, MeetingDetail.jsx, SummaryPanel.jsx
+     .recorder-controls, .btn-record, .btn-stop, .ws-*   -> RecorderControls.jsx
+     .live-transcript, .transcript-box, .final-line,
+       .interim-line, .recording-dot                     -> LiveTranscript.jsx
+     .meeting-list, .meeting-item, .meeting-link         -> MeetingList.jsx
+     .summary-panel, .summary-content                    -> SummaryPanel.jsx
+     .error, .muted                                      -> shared utility classes
+
+   FUTURE INTEGRATIONS:
+     TODO: Swap for Tailwind / CSS Modules / styled-components if preferred —
+     class names above are the contract to preserve.
+   ============================================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.app-shell { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+.app-header {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid #334155; padding-bottom: 12px; margin-bottom: 20px;
+}
+.app-header h1 { font-size: 1.3rem; margin: 0; }
+
+.app-footer { margin-top: 32px; color: #64748b; text-align: center; }
+
+.panel {
+  background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+  padding: 20px; margin-bottom: 20px;
+}
+
+button {
+  background: #334155; color: #e2e8f0; border: none; border-radius: 8px;
+  padding: 8px 16px; cursor: pointer; font-size: 0.95rem;
+}
+button:hover { background: #475569; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Recording controls (RecorderControls.jsx) */
+.recorder-controls { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.btn-record { background: #dc2626; }
+.btn-record:hover { background: #b91c1c; }
+.btn-stop { background: #475569; }
+
+/* WebSocket status pill — colored by connection state */
+.ws-status { font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; background: #334155; }
+.ws-open { background: #14532d; color: #86efac; }
+.ws-connecting { background: #713f12; color: #fde047; }
+.ws-error, .ws-closed { background: #7f1d1d; color: #fca5a5; }
+
+/* Live transcript (LiveTranscript.jsx) */
+.transcript-box {
+  background: #0f172a; border: 1px solid #334155; border-radius: 8px;
+  padding: 14px; max-height: 280px; overflow-y: auto;
+}
+.final-line { margin: 6px 0; }
+.interim-line { margin: 6px 0; color: #94a3b8; font-style: italic; } /* live "typing" */
+.recording-dot { color: #f87171; font-size: 0.8rem; animation: pulse 1.2s infinite; }
+@keyframes pulse { 50% { opacity: 0.3; } }
+
+/* Meeting list (MeetingList.jsx) */
+.meeting-list { list-style: none; padding: 0; margin: 0; }
+.meeting-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid #334155;
+}
+.meeting-link { background: none; text-align: left; flex: 1; }
+.btn-delete { background: none; }
+
+/* Summary (SummaryPanel.jsx) */
+.summary-content h4 { margin: 14px 0 6px; color: #93c5fd; }
+
+/* Utilities */
+.error { color: #fca5a5; }
+.muted { color: #64748b; }

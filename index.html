@@ -1,0 +1,27 @@
+<!--
+  ============================================================================
+  FILE: client/index.html — SINGLE-PAGE APP SHELL
+
+  PURPOSE:
+    The one and only HTML page Vite serves. React mounts into <div id="root">.
+    Everything visible is rendered by React from client/src/main.jsx onward.
+
+  CONNECTIONS:
+    - Loads:  /src/main.jsx  (Vite transforms the module on the fly in dev)
+    - Served by the Vite dev server at http://localhost:5173
+      (configured in client/vite.config.js, which also proxies /api -> :5000)
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Meeting Assistant</title>
+  </head>
+  <body>
+    <!-- React attaches here — see client/src/main.jsx -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
